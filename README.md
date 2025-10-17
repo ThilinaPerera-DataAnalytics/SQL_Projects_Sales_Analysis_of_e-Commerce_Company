@@ -5,7 +5,7 @@ Intermediate SQL for Data Analytics
 by Luke Barousse & Kelly Adams
 ```
 ---
-![coverimage]()
+![coverimage](cover_image.png)
 
 ---
 ## Overview
