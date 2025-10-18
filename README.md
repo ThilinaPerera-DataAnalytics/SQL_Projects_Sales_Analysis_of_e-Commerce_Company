@@ -5,7 +5,9 @@ Intermediate SQL for Data Analytics
 by Luke Barousse & Kelly Adams
 ```
 ---
-<img src="cover_image.png" alt="cover image" width="100%">
+<p align="center">
+  <img src="cover_image.png" alt="Customer Segmentation" width="75%">
+</p>
 
 
 ---
@@ -134,8 +136,9 @@ ORDER BY customer_segment DESC
 
 **📈 Visualization:**
 
-<img src="graphs\customer_segmentation.png" alt="Customer Revenue by Cohort Year" 
-     style="width: 75%; height: auto; margin: 0 auto; display: block;">
+<p align="center">
+  <img src="graphs\customer_segmentation.png" alt="Customer Segmentation" width="50%">
+</p>
 
 **📊 Key Findings:**
 - High-value segment (25% of customers) drives 66% of revenue ($135.4M)
@@ -168,8 +171,9 @@ GROUP BY cohort_year
 
 Customer Revenue by Cohort (Adjusted for time in market) - First Purchase Date 
 
-<img src="graphs\revenue_cohort.png" alt="Customer Revenue by Cohort Year" 
-     style="width: 75%; height: auto; margin: 0 auto; display: block;">
+<p align="center">
+  <img src="graphs\revenue_cohort.png" alt="Customer Revenue by Cohort Year" width="50%">
+</p>
 
 **📊 Key Findings:**  
 - Customer revenue is declining, older cohorts (2016-2018) spent ~$2,800+, while 2024 cohort spending dropped to ~$1,970.  
@@ -216,9 +220,9 @@ GROUP BY cohort_year, customer_status
 
 **📈 Visualization:**
 
-
-<img src="graphs\customer_retention.png" alt="Customer Churn by Cohort Year" 
-     style="width: 75%; height: auto; margin: 0 auto; display: block;">
+<p align="center">
+  <img src="graphs\customer_retention.png" alt="Customer Retention & Churn" width="50%">
+</p>
 
 **📊 Key Findings:**  
 - Cohort churn stabilizes at ~90% after 2-3 years, indicating a predictable long-term retention pattern.  
