@@ -1,4 +1,4 @@
-# Sales Analysis with SQL / PostgreSQL
+# Sales Analysis with SQL (PostgreSQL)
 ```
 Capstone Project
 Intermediate SQL for Data Analytics
@@ -6,7 +6,6 @@ by Luke Barousse & Kelly Adams
 ```
 ---
 <img src="cover_image.png" alt="cover image" width="100%">
-
 
 
 ---
@@ -38,43 +37,58 @@ SQL_Projects_Sales_Analysis_of_e-Commerce_Company
 2. **Cohort Analysis:** <br> How do different customer groups generate revenue?
 3. **Retention Analysis:** <br> Which customers haven't purchased recently?
 ---
+## 🛠️ Tech Stack
+- *Database* - **PostgreSQL 17+** 
+- *Analysis Tools/ IDE* - **PGAdmin + DBeaver + VSCode**
+- *Visualization & Publish to web* - **Power BI Desktop & Power BI Services** 
+- *Version control & portfolio showcase* - **Git/ GitHub + LinkedIn** 
+---
 ## Clean Up Data and Create a View
 
 [**🖥️ Query**](view_ca.sql)
 ```sql
-CREATE OR REPLACE VIEW cohort_analysis
+CREATE OR REPLACE VIEW cohort_analysis AS
 
-AS WITH customer_revenue AS (
-   SELECT
-      s.customerkey, s.orderdate,
-      sum(s.quantity * s.netprice * s.exchangerate) AS total_net_revenue,
-      count(s.orderkey) AS num_orders,
-      max(c.countryfull::text) AS countryfull,
-      max(c.age) AS age,
-      max(c.givenname::text) AS givenname,
-      max(c.surname::text) AS surname
-   FROM sales s
-   LEFT JOIN customer c ON s.customerkey = c.customerkey
-   GROUP BY s.customerkey, s.orderdate
-   ORDER BY s.customerkey, s.orderdate
+WITH customer_revenue AS (
+	SELECT
+		s.customerkey,
+		s.orderdate,
+		sum(s.quantity * s.netprice * s.exchangerate) AS total_net_revenue,
+		count(s.orderkey) AS num_orders,
+		max(c.countryfull::text) AS countryfull,
+		max(c.age) AS age,
+		max(c.givenname::text) AS givenname,
+		max(c.surname::text) AS surname
+	FROM
+		sales s
+	LEFT JOIN customer c ON
+		s.customerkey = c.customerkey
+	GROUP BY
+		s.customerkey,
+		s.orderdate
+	ORDER BY
+		s.customerkey,
+		s.orderdate
 )
  SELECT
-   customerkey, orderdate, total_net_revenue, num_orders, countryfull, age,
-   concat(TRIM(BOTH FROM givenname), ' ', TRIM(BOTH FROM surname)) AS cleaned_name,
-   min(orderdate) OVER (PARTITION BY customerkey) AS first_purchase_date,
-   EXTRACT(year FROM min(orderdate) OVER (PARTITION BY customerkey)) AS cohort_year
-FROM customer_revenue cr;
+	customerkey,
+	orderdate,
+	total_net_revenue,
+	num_orders,
+	countryfull,
+	age,
+	concat(TRIM(BOTH FROM givenname), ' ', TRIM(BOTH FROM surname)) AS cleaned_name,
+	min(orderdate) OVER (
+		PARTITION BY customerkey
+	) AS first_purchase_date,
+	EXTRACT(YEAR FROM min(orderdate) OVER (PARTITION BY customerkey)) AS cohort_year
+FROM
+	customer_revenue cr;
 ```
 
 - Aggregated sales and customer data into revenue metrics
 - Calculated first purchase dates for cohort analysis
 - Created view combining transactions and customer details
----
-## 🛠️ Tech Stack
-- *Database* - **PostgreSQL 17+** 
-- *Analysis Tools/ IDE* - **DBeaver + VSCode**
-- *Visualization & Publish to web* - **Power BI Desktop & Power BI Services** 
-- *Version control & portfolio showcase* - **Git/ GitHub + LinkedIn** 
 ---
 ## 🕵️ Analysis
 
@@ -120,7 +134,8 @@ ORDER BY customer_segment DESC
 
 **📈 Visualization:**
 
-<img src="../Resources/images/6.3_customer_segementation.png" alt="Customer Segmentation" width="50%">
+<img src="graphs\customer_segmentation.png" alt="Customer Revenue by Cohort Year" 
+     style="width: 75%; height: auto; margin: 0 auto; display: block;">
 
 **📊 Key Findings:**
 - High-value segment (25% of customers) drives 66% of revenue ($135.4M)
@@ -149,17 +164,12 @@ GROUP BY cohort_year
 - Cohorts were grouped by year of first purchase
 - Analyzed customer revenue at a cohort level
 
-**📈 Visualization:**
-
-> ⚠️ Note: This only includes 2 charts. 
+**📈 Visualization:** 
 
 Customer Revenue by Cohort (Adjusted for time in market) - First Purchase Date 
 
-<img src="../Resources/images/5.2_customer_revenue_normalized.png" alt="Customer Revenue Normalized" width="50%">
-
-Investigate Monthly Revenue & Customer Trends (3 Month Rolling Average)
-
-<img src="../Resources/images/5.2_monthly_revenue_customers_3mo.png" alt="Monthly Revenue & CustomerTrends" width="50%">  
+<img src="graphs\revenue_cohort.png" alt="Customer Revenue by Cohort Year" 
+     style="width: 75%; height: auto; margin: 0 auto; display: block;">
 
 **📊 Key Findings:**  
 - Customer revenue is declining, older cohorts (2016-2018) spent ~$2,800+, while 2024 cohort spending dropped to ~$1,970.  
@@ -171,7 +181,7 @@ Investigate Monthly Revenue & Customer Trends (3 Month Rolling Average)
 - Stabilize revenue fluctuations and introduce loyalty programs or subscriptions to ensure consistent spending.  
 - Investigate cohort differences by applying successful strategies from high-spending cohorts (2016-2018) to newer ones.
 ---
-### 3. Customer Retention
+### 3. Customer Retention & Churn
 [**🖥️ Query**](/Q3_Retention_Analysis.sql)
 ```sql
 WITH last_purchase AS (
@@ -197,7 +207,7 @@ SELECT
 	sum(count(customerkey)) OVER(PARTITION BY cohort_year) AS total_customers,
 	round(count(customerkey) * 100 / sum(count(customerkey)) OVER(PARTITION BY cohort_year), 2) AS status_prctage
 FROM churned_customers
-GROUP BY cohort_year, customer_status 🛠
+GROUP BY cohort_year, customer_status
 ```
 
 - Identified customers at risk of churning
@@ -206,7 +216,9 @@ GROUP BY cohort_year, customer_status 🛠
 
 **📈 Visualization:**
 
-<img src="../Resources/images/7.3_customer_churn_cohort_year.png" alt="Customer Churn by Cohort Year" style="width: 50%; height: auto;">
+
+<img src="graphs\customer_retention.png" alt="Customer Churn by Cohort Year" 
+     style="width: 75%; height: auto; margin: 0 auto; display: block;">
 
 **📊 Key Findings:**  
 - Cohort churn stabilizes at ~90% after 2-3 years, indicating a predictable long-term retention pattern.  
@@ -217,6 +229,10 @@ GROUP BY cohort_year, customer_status 🛠
 - Strengthen early engagement strategies to target the first 1-2 years with onboarding incentives, loyalty rewards, and personalized offers to improve long-term retention.  
 - Re-engage high-value churned customers by focusing on targeted win-back campaigns rather than broad retention efforts, as reactivating valuable users may yield higher ROI.  
 - Predict & preempt churn risk and use customer-specific warning indicators to proactively intervene with at-risk users before they lapse.
+
+<img src="graphs\dashboard.png" alt="Customer Churn by Cohort Year" 
+     style="width: 100%; height: auto; margin: 0 auto; display: block;">
+
 ---
 ## 🤺  Strategic Recommendations
 
