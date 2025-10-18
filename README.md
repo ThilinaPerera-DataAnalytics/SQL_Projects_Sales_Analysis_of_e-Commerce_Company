@@ -6,7 +6,7 @@ by Luke Barousse & Kelly Adams
 ```
 ---
 <p align="center">
-  <img src="cover_image.png" alt="Customer Segmentation" width="75%">
+  <img src="cover_image.png" alt="Customer Segmentation" width="100%">
 </p>
 
 
@@ -134,12 +134,6 @@ ORDER BY customer_segment DESC
 - Assigned customers to High, Mid, and Low-value segments
 - Calculated key metrics like total revenue
 
-**📈 Visualization:**
-
-<p align="center">
-  <img src="graphs\customer_segmentation.png" alt="Customer Segmentation" width="50%">
-</p>
-
 **📊 Key Findings:**
 - High-value segment (25% of customers) drives 66% of revenue ($135.4M)
 - Mid-value segment (50% of customers) generates 32% of revenue ($66.6M)
@@ -170,10 +164,6 @@ GROUP BY cohort_year
 **📈 Visualization:** 
 
 Customer Revenue by Cohort (Adjusted for time in market) - First Purchase Date 
-
-<p align="center">
-  <img src="graphs\revenue_cohort.png" alt="Customer Revenue by Cohort Year" width="50%">
-</p>
 
 **📊 Key Findings:**  
 - Customer revenue is declining, older cohorts (2016-2018) spent ~$2,800+, while 2024 cohort spending dropped to ~$1,970.  
@@ -218,12 +208,6 @@ GROUP BY cohort_year, customer_status
 - Analyzed last purchase patterns
 - Calculated customer-specific metrics
 
-**📈 Visualization:**
-
-<p align="center">
-  <img src="graphs\customer_retention.png" alt="Customer Retention & Churn" width="50%">
-</p>
-
 **📊 Key Findings:**  
 - Cohort churn stabilizes at ~90% after 2-3 years, indicating a predictable long-term retention pattern.  
 - Retention rates are consistently low (8-10%) across all cohorts, suggesting retention issues are systemic rather than specific to certain years.  
@@ -234,6 +218,7 @@ GROUP BY cohort_year, customer_status
 - Re-engage high-value churned customers by focusing on targeted win-back campaigns rather than broad retention efforts, as reactivating valuable users may yield higher ROI.  
 - Predict & preempt churn risk and use customer-specific warning indicators to proactively intervene with at-risk users before they lapse.
 
+### 📈 Visualization/ Dashboard
 <img src="graphs\dashboard.png" alt="Customer Churn by Cohort Year" 
      style="width: 100%; height: auto; margin: 0 auto; display: block;">
 
