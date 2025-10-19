@@ -130,19 +130,8 @@ GROUP BY customer_segment
 ORDER BY customer_segment DESC
 ```
 
-- Categorized customers based on total lifetime value (LTV)
-- Assigned customers to High, Mid, and Low-value segments
-- Calculated key metrics like total revenue
-
-**📊 Key Findings:**
-- High-value segment (25% of customers) drives 66% of revenue ($135.4M)
-- Mid-value segment (50% of customers) generates 32% of revenue ($66.6M)
-- Low-value segment (25% of customers) accounts for 2% of revenue ($4.3M)
-
-**🔍 Business Insights**
-- High-Value (66% revenue): Offer premium membership program to 12,372 VIP customers, as losing one customer significantly impacts revenue
-- Mid-Value (32% revenue): Create upgrade paths through personalized promotions, with potential $66.6M → $135.4M revenue opportunity
-- Low-Value (2% revenue): Design re-engagement campaigns and price-sensitive promotions to increase purchase frequency
+<img src="graphs\dashboard_pg2.png" alt="Customer Churn by Cohort Year" 
+     style="width: 100%; height: auto; margin: 0 auto; display: block;">
 ---
 ### 2. Customer Revenue by Cohort Year
 [**🖥️ Query**](/Q2_Cohort_Analysis.sql)
@@ -157,19 +146,8 @@ WHERE orderdate = first_purchase_date
 GROUP BY cohort_year
 ```
 
-- Tracked revenue and customer count per cohorts
-- Cohorts were grouped by year of first purchase
-- Analyzed customer revenue at a cohort level
-
-**📊 Key Findings:**  
-- Customer revenue is declining, older cohorts (2016-2018) spent ~$2,800+, while 2024 cohort spending dropped to ~$1,970.  
-- Revenue and customers peaked in 2022-2023, but both are now trending downward in 2024.  
-- High volatility in revenue and customer count, with sharp drops in 2020 and 2024, signaling retention challenges.  
-
-**🔍 Business Insights:**  
-- Boost retention & re-engagement by targeting recent cohorts (2022-2024) with personalized offers to prevent churn.  
-- Stabilize revenue fluctuations and introduce loyalty programs or subscriptions to ensure consistent spending.  
-- Investigate cohort differences by applying successful strategies from high-spending cohorts (2016-2018) to newer ones.
+<img src="graphs\dashboard_pg3.png" alt="Customer Churn by Cohort Year" 
+     style="width: 100%; height: auto; margin: 0 auto; display: block;">
 ---
 ### 3. Customer Retention & Churn
 [**🖥️ Query**](/Q3_Retention_Analysis.sql)
@@ -200,24 +178,12 @@ FROM churned_customers
 GROUP BY cohort_year, customer_status
 ```
 
-- Identified customers at risk of churning
-- Analyzed last purchase patterns
-- Calculated customer-specific metrics
-
-**📊 Key Findings:**  
-- Cohort churn stabilizes at ~90% after 2-3 years, indicating a predictable long-term retention pattern.  
-- Retention rates are consistently low (8-10%) across all cohorts, suggesting retention issues are systemic rather than specific to certain years.  
-- Newer cohorts (2022-2023) show similar churn trajectories, signaling that without intervention, future cohorts will follow the same pattern.  
-
-**🔍 Business Insights:**  
-- Strengthen early engagement strategies to target the first 1-2 years with onboarding incentives, loyalty rewards, and personalized offers to improve long-term retention.  
-- Re-engage high-value churned customers by focusing on targeted win-back campaigns rather than broad retention efforts, as reactivating valuable users may yield higher ROI.  
-- Predict & preempt churn risk and use customer-specific warning indicators to proactively intervene with at-risk users before they lapse.
-
-### 📈 Visualization/ Dashboard
-<img src="graphs\dashboard.png" alt="Customer Churn by Cohort Year" 
+<img src="graphs\dashboard_pg4.png" alt="Customer Churn by Cohort Year" 
      style="width: 100%; height: auto; margin: 0 auto; display: block;">
-
+---
+### 📈 Dashboard
+<img src="graphs\dashboard_pg1.png" alt="Customer Churn by Cohort Year" 
+     style="width: 100%; height: auto; margin: 0 auto; display: block;">
 ---
 ## 🤺  Strategic Recommendations
 
@@ -253,3 +219,5 @@ GROUP BY cohort_year, customer_status
 ## 🏆 License
     This project is licensed under the MIT License.
     Free to use and extend.
+
+
