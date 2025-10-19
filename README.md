@@ -9,7 +9,7 @@ by Luke Barousse & Kelly Adams
   <img src="cover_image.png" alt="Customer Segmentation" width="100%">
 </p>
 
-
+[📊 Interact with my Power BI Dashboard](https://app.powerbi.com/view?r=eyJrIjoiY2NlYzNjN2MtZGQ2YS00NDE2LWFhNGYtODEzYmQzY2Y5ZDBkIiwidCI6ImM0ZGRhYWFjLTQ4OWItNGQ1Zi1hMzVjLWFhODVlNmVkZjhkOCJ9&pageName=fa9447fa4c012e457c1d)
 ---
 ## Overview
 Analysis of customer behavior, retention, and lifetime value for an e-commerce company to improve customer retention and maximize revenue.
@@ -25,12 +25,12 @@ SQL_Projects_Sales_Analysis_of_e-Commerce_Company
 │   └── contoso_100k.sql        # Schema + table creation
 │
 ├── visuals/
-│   ├── Cohort_Analysis.pbix           # Final Power BI report
-│   └── visuals_screenshots           # PNG exports of dashboards
+│   ├── Cohort_Analysis.pbix    # Final Power BI report
+│   └── visuals_screenshots     # PNG exports of dashboards
 │
 ├── cover_image.png
 ├── LICENSE.md
-├── README.md                          # Project documentation
+├── README.md                   # Project documentation
 └── .gitignore
 ```
 ---
@@ -41,9 +41,9 @@ SQL_Projects_Sales_Analysis_of_e-Commerce_Company
 ---
 ## 🛠️ Tech Stack
 - *Database* - **PostgreSQL 17+** 
-- *Analysis Tools/ IDE* - **PGAdmin + DBeaver + VSCode**
+- *Analysis Tools/ IDE* - **DBeaver + VSCode**
 - *Visualization & Publish to web* - **Power BI Desktop & Power BI Services** 
-- *Version control & portfolio showcase* - **Git/ GitHub + LinkedIn** 
+- *Version control & portfolio showcase* - **Git + GitHub + LinkedIn** 
 ---
 ## Clean Up Data and Create a View
 
@@ -161,10 +161,6 @@ GROUP BY cohort_year
 - Cohorts were grouped by year of first purchase
 - Analyzed customer revenue at a cohort level
 
-**📈 Visualization:** 
-
-Customer Revenue by Cohort (Adjusted for time in market) - First Purchase Date 
-
 **📊 Key Findings:**  
 - Customer revenue is declining, older cohorts (2016-2018) spent ~$2,800+, while 2024 cohort spending dropped to ~$1,970.  
 - Revenue and customers peaked in 2022-2023, but both are now trending downward in 2024.  
@@ -252,7 +248,6 @@ GROUP BY cohort_year, customer_status
 📌 Data Science/ Data Analytics D-Technosavant
 📌 Machine Learning, Deep Learning, LLM/LMM, NLP, and Automated Data Pipelines Inquisitive
 ``` 
-
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/thilina-perera-148aa934/)  [![TikTok](https://img.shields.io/badge/TikTok-%23000000.svg?logo=TikTok&logoColor=white)](https://tiktok.com/@data_with_tp) [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://youtube.com/@Data_with_TP) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:kgttpereraqatar2022@gmail.com) 
 
 ## 🏆 License
